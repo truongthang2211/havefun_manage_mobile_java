@@ -4,19 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MyHotelFragment">
+    tools:context=".activities.HotelManageActivity">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/room_pic_vp2"
         android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/border_home_textview"
+        app:layout_constraintWidth=""></androidx.viewpager2.widget.ViewPager2>
+
+    <Button
+        android:id="@+id/img_upload_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginRight="10dp"
+        android:text="Upload"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintBottom_toBottomOf="@+id/room_pic_vp2"
+        app:layout_constraintEnd_toEndOf="@+id/room_pic_vp2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </Button>
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator_vp2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintVertical_bias="0"
+        app:ci_drawable="@drawable/bg_indicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/room_pic_vp2" />
+
+    <EditText
+        android:id="@+id/hotel_name_mng"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_bg"
+        android:drawablePadding="20dp"
+        android:hint="Tên khách sạn"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/room_pic_vp2"
+        app:layout_constraintWidth_percent=".8" />
+
+    <EditText
+        android:id="@+id/hotel_addr_mng"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_bg"
+        android:drawablePadding="20dp"
+        android:hint="Địa chỉ"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_name_mng"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent=".8" />
+    <EditText
+        android:id="@+id/hotel_desc_mng"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_bg"
+        android:drawablePadding="20dp"
+        android:hint="Mô tả"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_addr_mng"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent=".8" />
+
+    <Button
+        android:id="@+id/luu_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg"
+        android:text="Lưu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/huy_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_desc_mng"></Button>
+
+    <Button
+        android:id="@+id/huy_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg"
+        android:text="Hủy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/luu_btn"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_desc_mng"></Button>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
