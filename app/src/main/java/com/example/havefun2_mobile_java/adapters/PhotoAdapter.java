@@ -1,45 +1,54 @@
 package com.example.havefun2_mobile_java.adapters;
 
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.havefun2_mobile_java.fragments.PhotoFragment;
+import com.example.havefun2_mobile_java.R;
 import com.example.havefun2_mobile_java.models.Photo;
 
 import java.util.List;
 
-public class PhotoAdapter extends FragmentStateAdapter{
+public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
+    private List<Photo> listPhoto;
 
-    private List<Photo> mListPhoto;
-
-    public PhotoAdapter(@NonNull FragmentActivity fragmentActivity, List<Photo> list) {
-        super(fragmentActivity);
-        this.mListPhoto = list;
+    public PhotoAdapter(List<Photo> listPhoto) {
+        this.listPhoto = listPhoto;
     }
 
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
-        Photo photo= mListPhoto.get(position);
+    public PhotoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo,parent,false);
+        return new PhotoViewHolder(view);
+    }
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_photo",photo);
-
-        PhotoFragment photoFragment = new PhotoFragment();
-        photoFragment.setArguments(bundle);
-
-        return photoFragment;
+    @Override
+    public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
+        Photo photo =listPhoto.get(position);
+        if(photo ==null){
+            return;
+        }
+        holder.imageView.setImageResource(photo.getResourceid());
     }
 
     @Override
     public int getItemCount() {
-        if(mListPhoto != null){
-            return mListPhoto.size();
+        if(listPhoto!= null){
+            return listPhoto.size();
         }
         return 0;
+    }
+
+    public class PhotoViewHolder extends RecyclerView.ViewHolder{
+        private ImageView imageView;
+        public PhotoViewHolder (@NonNull View itemView){
+            super(itemView);
+            imageView= itemView.findViewById(R.id.photo_item);
+        }
     }
 }
