@@ -31,19 +31,52 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:id="@+id/tv_hotel"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:textStyle="italic"
-            android:textAlignment="center"
-            android:hint="Khách sạn: 999 Rose Gusta"
-            android:paddingTop="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </TextView>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Khách sạn: "
+                    android:textStyle="bold">
+                </TextView>
+                <TextView
+                    android:id="@+id/tv_hotel"
+                    android:layout_width="200dp"
+                    android:layout_height="20dp"
+                    android:textStyle="italic"
+                    android:hint="999 Rose Gusta"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Vị trí: "
+                    android:textStyle="bold">
+                </TextView>
+                <TextView
+                    android:id="@+id/tv_pos"
+                    android:layout_width="200dp"
+                    android:layout_height="20dp"
+                    android:textStyle="italic"
+                    android:hint="Quản lý"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                </TextView>
+            </LinearLayout>
+
         </LinearLayout>
 
         <Button
