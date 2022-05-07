@@ -1,9 +1,443 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.EnterRoomActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@android:color/holo_orange_dark"
+            android:scaleType="centerCrop"
+            app:layout_constraintHeight_percent=".27"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView_bedroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="165dp"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_bedroom"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_TTPhong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="-8dp"
+            android:text="Thông tin phòng"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/imageView_bedroom"
+            tools:ignore="MissingConstraints,NotSibling" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1250dp"
+            android:layout_marginTop="110dp"
+            android:background="@drawable/vie_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/tv_TenPhong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="34dp"
+                android:text="Tên phòng"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_MaPhong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Mã phòng"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/txt_TenPhong" />
+
+            <TextView
+                android:id="@+id/tv_MoTaPhong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Mô tả phòng"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/txt_MaPhong" />
+
+            <TextView
+                android:id="@+id/tv_GiaGoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Giá gốc"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/txt_MoTaPhong" />
+
+            <TextView
+                android:id="@+id/tv_DKP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+                android:text="Điều kiện phòng"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+
+            <TextView
+                android:id="@+id/tv_Tienich"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="345dp"
+                android:text="Tiện ích"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+
+            <TextView
+                android:id="@+id/tv_GiaTheoGio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Giá theo giờ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+
+            <TextView
+                android:id="@+id/tv_GiaThemGio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Giá thêm giờ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaTheoGio" />
+
+            <TextView
+                android:id="@+id/tv_GiaQuaDem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Giá qua đêm"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaThemGio" />
+
+            <TextView
+                android:id="@+id/tv_GiaTheoNgay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Giá theo ngày"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaQuaDem" />
+
+            <TextView
+                android:id="@+id/tv_VND1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="20dp"
+                android:text="đ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
+                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+
+            <TextView
+                android:id="@+id/tv_VND2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="20dp"
+                android:text="đ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
+                app:layout_constraintTop_toBottomOf="@id/tv_VND1" />
+
+            <TextView
+                android:id="@+id/tv_VND3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="241dp"
+                android:layout_marginTop="26dp"
+                android:text="đ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
+                app:layout_constraintTop_toBottomOf="@id/tv_VND2" />
+
+            <TextView
+                android:id="@+id/tv_VND4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="28dp"
+                android:text="đ"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
+                app:layout_constraintTop_toBottomOf="@id/tv_VND3" />
+
+            <TextView
+                android:id="@+id/tv_LoaiPhong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="15dp"
+                android:text="Loại phòng"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_MaPhong"
+                app:layout_constraintTop_toBottomOf="@id/txt_TenPhong" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_TenPhong"
+                android:layout_width="350dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@+id/tv_TenPhong"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_GioDauTien"
+                android:layout_width="230dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
+                app:layout_constraintTop_toBottomOf="@+id/tv_GiaGoc"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_GioTiepTheo"
+                android:layout_width="230dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
+                app:layout_constraintTop_toBottomOf="@+id/txt_GioDauTien"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_GGQuaDem"
+                android:layout_width="230dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
+                app:layout_constraintTop_toBottomOf="@+id/txt_GioTiepTheo"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_GiaNgay"
+                android:layout_width="230dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="14dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
+                app:layout_constraintTop_toBottomOf="@+id/txt_GGQuaDem"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_MoTaPhong"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
+                app:layout_constraintTop_toBottomOf="@+id/tv_MoTaPhong"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_MaPhong"
+                android:layout_width="160dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/tv_MaPhong"
+                app:layout_constraintTop_toBottomOf="@+id/tv_MaPhong"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_LoaiPhong"
+                android:layout_width="160dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#C2C2C2"
+                app:layout_constraintStart_toStartOf="@id/txt_MaPhong"
+                app:layout_constraintTop_toBottomOf="@+id/tv_LoaiPhong"
+                tools:ignore="MissingConstraints" />
+
+            <CheckBox
+                android:id="@+id/chk_GiuongDoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Giường đôi"
+                app:layout_constraintStart_toStartOf="@id/tv_DKP"
+                app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
+                tools:ignore="MissingConstraints" />
+
+            <CheckBox
+                android:id="@+id/chk_30m2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="30m2"
+                app:layout_constraintStart_toStartOf="@id/chk_GiuongDoi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
+                tools:ignore="MissingConstraints" />
+
+            <CheckBox
+                android:id="@+id/chk_CuaSo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Cửa sổ"
+                app:layout_constraintStart_toStartOf="@id/chk_30m2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
+                tools:ignore="MissingConstraints" />
+
+            <CheckBox
+                android:id="@+id/chk_SanGo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Sàn gỗ"
+                app:layout_constraintStart_toStartOf="@id/tv_Tienich"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
+
+            <CheckBox
+                android:id="@+id/chk_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="TV"
+                app:layout_constraintStart_toStartOf="@id/chk_Wifi"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
+
+            <CheckBox
+                android:id="@+id/chk_ThangMay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Thang máy"
+                app:layout_constraintStart_toStartOf="@id/chk_MayLanh"
+                app:layout_constraintTop_toBottomOf="@+id/chk_LeTan" />
+
+            <CheckBox
+                android:id="@+id/chk_TruyenHinhCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Truyền hình cáp"
+                app:layout_constraintStart_toStartOf="@id/chk_ThangMay"
+                app:layout_constraintTop_toBottomOf="@+id/chk_LeTan" />
+
+            <CheckBox
+                android:id="@+id/chk_MayLanh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Máy lạnh"
+                app:layout_constraintStart_toStartOf="@id/tv_Tienich"
+                app:layout_constraintTop_toBottomOf="@+id/chk_SanGo" />
+
+            <CheckBox
+                android:id="@+id/chk_Wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Wifi"
+                app:layout_constraintStart_toStartOf="@id/chk_SanGo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
+
+            <CheckBox
+                android:id="@+id/chk_LeTan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Lễ tân 24/24"
+                app:layout_constraintStart_toStartOf="@id/chk_TV"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
+
+            <Button
+                android:id="@+id/btn_Them"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/edit_btn_background"
+                android:text="Thêm"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_Tienich"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich"
+                tools:ignore="HardcodedText,MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_Huy"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/edit_btn_sua_background"
+                android:text="Hủy"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/btn_Them"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich"
+                tools:ignore="HardcodedText,MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
