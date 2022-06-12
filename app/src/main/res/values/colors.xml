@@ -11,6 +11,7 @@
     <color name="blue">#0a69f0</color>
     <color name="red">#f44336</color>
     <color name="green">#48a682</color>
-
     <color name="veryLightGrey_1">#f6f8fb</color>
+    <color name="orange">#FF9900</color>
+    <color name="colorEditText">#14000000</color>
 </resources>
