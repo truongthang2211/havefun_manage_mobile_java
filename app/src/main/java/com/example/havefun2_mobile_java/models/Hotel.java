@@ -1,19 +1,26 @@
 package com.example.havefun2_mobile_java.models;
 
-import java.time.LocalDateTime;
-
 public class Hotel {
     String id,name,description;
     String [] imgs;
-    com.example.havefun.models.Rating[] ratings;
-    com.example.havefun.models.Room[] rooms;
+    Rating[] ratings;
+    Room[] rooms;
     Promotion[] promotions;
-    LocalDateTime created_at;
-    com.example.havefun.models.Location location;
+    Timestamp created_at;
+    Location location;
 
     public Hotel() {
     }
-
+    public float getAvgStar(){
+        float sum = 0;
+        if (ratings==null){
+            return 0;
+        }
+        for (int i = 0;i<ratings.length;i++){
+            sum+= ratings[i].start;
+        }
+        return ratings.length!=0?sum/ratings.length:0;
+    }
     public String getId() {
         return id;
     }
@@ -46,19 +53,19 @@ public class Hotel {
         this.imgs = imgs;
     }
 
-    public com.example.havefun.models.Rating[] getRatings() {
+    public Rating[] getRatings() {
         return ratings;
     }
 
-    public void setRatings(com.example.havefun.models.Rating[] ratings) {
+    public void setRatings(Rating[] ratings) {
         this.ratings = ratings;
     }
 
-    public com.example.havefun.models.Room[] getRooms() {
+    public Room[] getRooms() {
         return rooms;
     }
 
-    public void setRooms(com.example.havefun.models.Room[] rooms) {
+    public void setRooms(Room[] rooms) {
         this.rooms = rooms;
     }
 
@@ -70,23 +77,23 @@ public class Hotel {
         this.promotions = promotions;
     }
 
-    public LocalDateTime getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public com.example.havefun.models.Location getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(com.example.havefun.models.Location location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
-    public Hotel(String id, String name, String description, String[] imgs, com.example.havefun.models.Rating[] ratings, com.example.havefun.models.Room[] rooms, Promotion[] promotions, LocalDateTime created_at, com.example.havefun.models.Location location) {
+    public Hotel(String id, String name, String description, String[] imgs, Rating[] ratings, Room[] rooms, Promotion[] promotions, Timestamp created_at, Location location) {
         this.id = id;
         this.name = name;
         this.description = description;

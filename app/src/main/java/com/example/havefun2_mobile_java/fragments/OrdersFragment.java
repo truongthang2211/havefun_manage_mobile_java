@@ -2,12 +2,12 @@ package com.example.havefun2_mobile_java.fragments;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -20,8 +20,6 @@ import android.widget.TextView;
 import com.example.havefun2_mobile_java.R;
 import com.example.havefun2_mobile_java.models.Order;
 import com.google.android.material.button.MaterialButton;
-
-import org.w3c.dom.Text;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -113,16 +111,11 @@ public class OrdersFragment extends Fragment {
             Daybtn.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.white));
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void LoadOrderItem() {
 
 
         ArrayList<Order> Orderlist = new ArrayList<Order>();
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
-        Orderlist.add(new Order("C113", "22:11 22/11/2022", "22:11 22/11/2022", "22:11 22/11/2023", "096996196"));
         LayoutInflater inflater = LayoutInflater.from(this.context);
         for (Order i : Orderlist) {
             View oder_layout = inflater.inflate(R.layout.order_card_item, OrderLayout, false);
@@ -131,6 +124,7 @@ public class OrdersFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void SetItem(View view, Order o) {
         TextView roomId = view.findViewById(R.id.Order_Room_Tv_e);
         TextView orderTime = view.findViewById(R.id.Order_orderTime_Tv_e);
@@ -138,10 +132,10 @@ public class OrdersFragment extends Fragment {
         TextView leftTime = view.findViewById(R.id.Order_Leftime_Tv_e);
         TextView user = view.findViewById(R.id.Order_user_Tv_e);
 
-        roomId.setText(o.getRoomId());
-        orderTime.setText(o.getOrderTime());
-        joinTime.setText(o.getJoinTime());
-        leftTime.setText(o.getLeftTime());
-        user.setText(o.getUser());
+        roomId.setText(o.getRoom().getRoom_id());
+        orderTime.setText(o.getCreated_at().toString());
+        joinTime.setText(o.getOrder_start().toString());
+        leftTime.setText(o.getOrder_end().toString());
+        user.setText(o.getUser().getPhone());
     }
 }

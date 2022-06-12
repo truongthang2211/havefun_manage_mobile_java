@@ -1,13 +1,27 @@
 package com.example.havefun2_mobile_java.models;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Promotion {
     String [] order_type;
-    LocalDateTime time_start,time_end,created_at;
-    String name,description,hotel_id,id,img;
+    Timestamp time_start;
+    Timestamp time_end;
+    Timestamp created_at;
+    String name;
+    String description;
+    String hotel_id;
+    String id;
+    String img;
     float discount_ratio;
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public long getRemainDay(){
+        return ChronoUnit.DAYS.between(time_end.toLocalDateTime(), LocalDateTime.now());
+    }
     public Promotion() {
     }
 
@@ -19,27 +33,27 @@ public class Promotion {
         this.order_type = order_type;
     }
 
-    public LocalDateTime getTime_start() {
+    public Timestamp getTime_start() {
         return time_start;
     }
 
-    public void setTime_start(LocalDateTime time_start) {
+    public void setTime_start(Timestamp time_start) {
         this.time_start = time_start;
     }
 
-    public LocalDateTime getTime_end() {
+    public Timestamp getTime_end() {
         return time_end;
     }
 
-    public void setTime_end(LocalDateTime time_end) {
+    public void setTime_end(Timestamp time_end) {
         this.time_end = time_end;
     }
 
-    public LocalDateTime getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 

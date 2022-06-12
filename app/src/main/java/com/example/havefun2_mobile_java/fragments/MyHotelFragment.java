@@ -15,11 +15,11 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.havefun2_mobile_java.databinding.FragmentMyhotelBinding;
 import com.example.havefun2_mobile_java.viewmodels.HomeViewModel;
 
-import me.relex.circleindicator.CircleIndicator3;
+//import me.relex.circleindicator.CircleIndicator3;
 
 public class MyHotelFragment extends Fragment {
     private ViewPager2 mviewPager2;
-    private CircleIndicator3 mcircleIndicator3;
+//    private CircleIndicator3 mcircleIndicator3;
     private FragmentMyhotelBinding binding;
 
     @Override

@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.havefun2_mobile_java.R;
-import com.example.havefun2_mobile_java.models.Photo;
 
 public class PhotoFragment extends Fragment {
 
@@ -22,10 +21,10 @@ public class PhotoFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_photo,container,false);
 
         Bundle bundle = getArguments();
-        Photo photo = (Photo) bundle.get("object_photo");
+//        Photo photo = (Photo) bundle.get("object_photo");
 
         ImageView imgPhoto= mView.findViewById(R.id.img_photo);
-        imgPhoto.setImageResource(photo.getResourceid());
+//        imgPhoto.setImageResource(photo.getResourceid());
 
         return mView;
     }
