@@ -19,8 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,51 +32,24 @@
                 app:layout_constraintVertical_chainStyle="packed">
 
                 <ImageView
-                    android:id="@+id/room_pic_iv"
+                    android:id="@+id/hotel_pic_iv"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:background="@drawable/border_home_textview"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth=""></ImageView>
-
-                <Button
-                    android:id="@+id/img_upload_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:clickable="true"
-                    android:text="Upload"
-                    android:textSize="10dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/room_pic_iv"
-                    app:layout_constraintEnd_toEndOf="@+id/room_pic_iv"
-                    app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintStart_toStartOf="@id/img_vp2"
-                    app:layout_constraintTop_toTopOf="@+id/room_pic_iv"
-                    app:layout_constraintVertical_bias="1"></Button>
+                    app:layout_constraintWidth=""
+                    app:srcCompat="@drawable/default_image"
+                    tools:srcCompat="@drawable/default_image"></ImageView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <me.relex.circleindicator.CircleIndicator3
-                android:id="@+id/indicator3"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                app:ci_drawable="@drawable/bg_indicator"
-                app:layout_constraintVertical_bias="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/room_pic_iv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </me.relex.circleindicator.CircleIndicator3>
             <LinearLayout
                 android:id="@+id/layout_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <EditText
@@ -121,6 +93,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/hotel_name_mng"
                     app:layout_constraintVertical_bias="0"
                     app:layout_constraintWidth_percent=".8" />
+
                 <EditText
                     android:id="@+id/hotel_district_mng"
                     android:layout_width="match_parent"
@@ -141,6 +114,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/hotel_name_mng"
                     app:layout_constraintVertical_bias="0"
                     app:layout_constraintWidth_percent=".8" />
+
                 <EditText
                     android:id="@+id/hotel_city_mng"
                     android:layout_width="match_parent"
@@ -192,25 +166,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="40dp"
+                        android:layout_marginBottom="16dp"
                         android:background="@drawable/btn_bg"
                         android:clickable="true"
                         android:text="Lưu"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/huy_btn"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"></Button>
 
-                    <Button
-                        android:id="@+id/huy_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="60dp"
-                        android:background="@drawable/btn_bg"
-                        android:clickable="true"
-                        android:text="Hủy"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"></Button>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
