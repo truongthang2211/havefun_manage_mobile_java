@@ -69,6 +69,7 @@ public class EnterPromotionActivity extends AppCompatActivity {
 
     long lTimeStart, lTimeEnd;
 
+    String[] orderTypeChosen = new String[1];
     final Calendar myCalendar = Calendar.getInstance();
     EditText editTextTitle;
     EditText editTextDescription;
@@ -248,6 +249,9 @@ public class EnterPromotionActivity extends AppCompatActivity {
         Promotion postPromotion = new Promotion();
         postPromotion.setHotel_id("k0N8OV6408ddA1ktDSdg");
         postPromotion.setName(editTextTitle.getText().toString());
+        orderTypeChosen[0] = autoCompleteTextViewPromotionType.getText().toString();
+        Log.e("yls", String.valueOf(orderTypeChosen[0]));
+        postPromotion.setOrder_type(orderTypeChosen);
         postPromotion.setDescription(editTextDescription.getText().toString());
         postPromotion.setDiscount_ratio(Float.parseFloat(editTextDiscount.getText().toString()));
 
