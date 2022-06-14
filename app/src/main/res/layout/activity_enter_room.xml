@@ -44,19 +44,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1250dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="110dp"
             android:background="@drawable/vie_bg"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingBottom="36dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="1.0"
             tools:layout_editor_absoluteX="0dp">
 
             <TextView
                 android:id="@+id/tv_TenPhong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="34dp"
                 android:text="Tên phòng"
                 android:textSize="16sp"
@@ -101,12 +103,12 @@
                 android:id="@+id/tv_DKP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="220dp"
+                android:layout_marginTop="24dp"
                 android:text="Điều kiện phòng"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_GiaNgay" />
 
             <TextView
                 android:id="@+id/tv_Tienich"
@@ -123,85 +125,85 @@
                 android:id="@+id/tv_GiaTheoGio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Giá theo giờ"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GioDauTien"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+                app:layout_constraintTop_toTopOf="@+id/txt_GioDauTien" />
 
             <TextView
                 android:id="@+id/tv_GiaThemGio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="Giá thêm giờ"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GioTiepTheo"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaTheoGio" />
+                app:layout_constraintTop_toTopOf="@+id/txt_GioTiepTheo" />
 
             <TextView
                 android:id="@+id/tv_GiaQuaDem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
                 android:text="Giá qua đêm"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GGQuaDem"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaThemGio" />
+                app:layout_constraintTop_toTopOf="@+id/txt_GGQuaDem" />
 
             <TextView
                 android:id="@+id/tv_GiaTheoNgay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
                 android:text="Giá theo ngày"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GiaNgay"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaQuaDem" />
+                app:layout_constraintTop_toTopOf="@+id/txt_GiaNgay" />
 
             <TextView
                 android:id="@+id/tv_VND1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="đ"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
-                app:layout_constraintTop_toBottomOf="@id/tv_GiaGoc" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GioDauTien"
+                app:layout_constraintStart_toEndOf="@+id/txt_GioDauTien" />
 
             <TextView
                 android:id="@+id/tv_VND2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="đ"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
-                app:layout_constraintTop_toBottomOf="@id/tv_VND1" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GioTiepTheo"
+                app:layout_constraintStart_toEndOf="@+id/txt_GioTiepTheo" />
 
             <TextView
                 android:id="@+id/tv_VND3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="241dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="đ"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
-                app:layout_constraintTop_toBottomOf="@id/tv_VND2" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GGQuaDem"
+                app:layout_constraintStart_toEndOf="@+id/txt_GGQuaDem" />
 
             <TextView
                 android:id="@+id/tv_VND4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="đ"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txt_GioDauTien"
-                app:layout_constraintTop_toBottomOf="@id/tv_VND3" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_GiaNgay"
+                app:layout_constraintStart_toEndOf="@+id/txt_GiaNgay" />
 
             <TextView
                 android:id="@+id/tv_LoaiPhong"
@@ -217,8 +219,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_TenPhong"
-                android:layout_width="350dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#C2C2C2"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
@@ -227,8 +229,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_GioDauTien"
-                android:layout_width="230dp"
-                android:layout_height="35dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#C2C2C2"
@@ -238,8 +240,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_GioTiepTheo"
-                android:layout_width="230dp"
-                android:layout_height="35dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#C2C2C2"
@@ -249,8 +251,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_GGQuaDem"
-                android:layout_width="230dp"
-                android:layout_height="35dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#C2C2C2"
@@ -260,8 +262,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_GiaNgay"
-                android:layout_width="230dp"
-                android:layout_height="35dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="14dp"
                 android:backgroundTint="#C2C2C2"
@@ -271,8 +273,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_MoTaPhong"
-                android:layout_width="350dp"
-                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#C2C2C2"
                 app:layout_constraintStart_toStartOf="@id/tv_TenPhong"
@@ -282,7 +284,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_MaPhong"
                 android:layout_width="160dp"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="#C2C2C2"
                 app:layout_constraintStart_toStartOf="@id/tv_MaPhong"
@@ -292,7 +294,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_LoaiPhong"
                 android:layout_width="160dp"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="200dp"
                 android:layout_marginTop="6dp"
                 android:backgroundTint="#C2C2C2"
@@ -315,11 +317,11 @@
                 android:id="@+id/chk_30m2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="30m2"
-                app:layout_constraintStart_toStartOf="@id/chk_GiuongDoi"
+                app:layout_constraintStart_toEndOf="@+id/chk_GiuongDoi"
                 app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
                 tools:ignore="MissingConstraints" />
 
@@ -327,11 +329,11 @@
                 android:id="@+id/chk_CuaSo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Cửa sổ"
-                app:layout_constraintStart_toStartOf="@id/chk_30m2"
+                app:layout_constraintStart_toEndOf="@+id/chk_30m2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
                 tools:ignore="MissingConstraints" />
 
@@ -349,79 +351,72 @@
                 android:id="@+id/chk_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="TV"
-                app:layout_constraintStart_toStartOf="@id/chk_Wifi"
+                app:layout_constraintStart_toStartOf="@+id/chk_CuaSo"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
 
             <CheckBox
                 android:id="@+id/chk_ThangMay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Thang máy"
-                app:layout_constraintStart_toStartOf="@id/chk_MayLanh"
-                app:layout_constraintTop_toBottomOf="@+id/chk_LeTan" />
+                app:layout_constraintStart_toStartOf="@+id/chk_TV"
+                app:layout_constraintTop_toTopOf="@+id/chk_LeTan" />
 
             <CheckBox
                 android:id="@+id/chk_TruyenHinhCap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="130dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Truyền hình cáp"
-                app:layout_constraintStart_toStartOf="@id/chk_ThangMay"
+                app:layout_constraintStart_toStartOf="@+id/chk_LeTan"
                 app:layout_constraintTop_toBottomOf="@+id/chk_LeTan" />
 
             <CheckBox
                 android:id="@+id/chk_MayLanh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Máy lạnh"
-                app:layout_constraintStart_toStartOf="@id/tv_Tienich"
-                app:layout_constraintTop_toBottomOf="@+id/chk_SanGo" />
+                app:layout_constraintStart_toStartOf="@+id/chk_Wifi"
+                app:layout_constraintTop_toTopOf="@+id/chk_ThangMay" />
 
             <CheckBox
                 android:id="@+id/chk_Wifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Wifi"
-                app:layout_constraintStart_toStartOf="@id/chk_SanGo"
+                app:layout_constraintStart_toStartOf="@+id/chk_30m2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
 
             <CheckBox
                 android:id="@+id/chk_LeTan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Lễ tân 24/24"
-                app:layout_constraintStart_toStartOf="@id/chk_TV"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
+                app:layout_constraintStart_toStartOf="@+id/chk_SanGo"
+                app:layout_constraintTop_toBottomOf="@+id/chk_SanGo" />
 
             <Button
                 android:id="@+id/btn_Them"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_background"
                 android:text="Thêm"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_Tienich"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich"
+                app:layout_constraintTop_toBottomOf="@+id/chk_TruyenHinhCap"
                 tools:ignore="HardcodedText,MissingConstraints" />
 
             <Button
@@ -429,12 +424,11 @@
                 android:layout_width="120dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="200dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Hủy"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/btn_Them"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Tienich"
+                app:layout_constraintTop_toTopOf="@+id/btn_Them"
                 tools:ignore="HardcodedText,MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
