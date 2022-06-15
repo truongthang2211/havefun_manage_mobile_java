@@ -234,6 +234,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#C2C2C2"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
                 app:layout_constraintTop_toBottomOf="@+id/tv_GiaGoc"
                 tools:ignore="MissingConstraints" />
@@ -245,6 +246,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#C2C2C2"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
                 app:layout_constraintTop_toBottomOf="@+id/txt_GioDauTien"
                 tools:ignore="MissingConstraints" />
@@ -256,6 +258,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#C2C2C2"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
                 app:layout_constraintTop_toBottomOf="@+id/txt_GioTiepTheo"
                 tools:ignore="MissingConstraints" />
@@ -267,6 +270,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="14dp"
                 android:backgroundTint="#C2C2C2"
+                android:inputType="number"
                 app:layout_constraintStart_toStartOf="@id/tv_GiaTheoGio"
                 app:layout_constraintTop_toBottomOf="@+id/txt_GGQuaDem"
                 tools:ignore="MissingConstraints" />
@@ -416,7 +420,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_Tienich"
-                app:layout_constraintTop_toBottomOf="@+id/chk_TruyenHinhCap"
+                app:layout_constraintTop_toBottomOf="@+id/myroom_imgs_viewpager"
                 tools:ignore="HardcodedText,MissingConstraints" />
 
             <Button
@@ -431,6 +435,41 @@
                 app:layout_constraintTop_toTopOf="@+id/btn_Them"
                 tools:ignore="HardcodedText,MissingConstraints" />
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/myroom_imgs_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chk_TruyenHinhCap" >
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+            <ImageView
+                android:id="@+id/myroom_chooseimg_ImV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintEnd_toEndOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintStart_toStartOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintTop_toTopOf="@+id/myroom_imgs_viewpager"
+                app:srcCompat="@drawable/default_image" />
+
+            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                android:id="@+id/worm_dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="16dp"
+                app:dotsSpacing="4dp"
+                app:dotsStrokeWidth="2dp"
+
+                app:layout_constraintBottom_toBottomOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintEnd_toEndOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintStart_toStartOf="@+id/myroom_imgs_viewpager" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
