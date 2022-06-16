@@ -1,6 +1,9 @@
 package com.example.havefun2_mobile_java.utils;
 
-import com.example.havefun2_mobile_java.models.Hotel;
+//import com.example.havefun2_mobile_java.models.Hotel;
+
+import com.example.havefun2_mobile_java.models.Promotion;
+
 
 import org.json.JSONObject;
 
@@ -19,4 +22,7 @@ public interface WebServiceAPI {
 
     @PUT("/api/hotels/editroom")
     Call<Object> EditRoom(@Body RequestBody file);
+
+    @POST("/api/promotions/create")
+    Call<Object> CreatePromotion(@Body RequestBody file);
 }

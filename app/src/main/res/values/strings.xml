@@ -4,13 +4,13 @@
     <string name="title_preference">Ưu đãi</string>
     <string name="title_profile">Tài khoản</string>
     <!-- TODO: Remove or change this placeholder text -->
-
     <string-array name="myarray">
         <item>Tất cả</item>
         <item>Theo giờ</item>
         <item>Theo ngày</item>
         <item>Qua đêm</item>
     </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="server_address">http://192.168.1.11:3000</string>
 </resources>
