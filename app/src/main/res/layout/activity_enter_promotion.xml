@@ -36,35 +36,9 @@
                 android:hint="Tên ưu đãi"
                 android:paddingLeft="20dp"
                 android:singleLine="true"
-                app:layout_constraintBottom_toTopOf="@id/edit_ip"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvVoucherTitle" />
-
-            <AutoCompleteTextView
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_margin="20dp"
-                android:id="@+id/edit_ip"
-                android:text="default value"
-                android:paddingLeft="20dp"
-
-                android:background="@drawable/background_input"
-                android:layout_width="0dp"
-                android:layout_height= "50dp"
-                app:layout_constraintTop_toBottomOf="@+id/etVoucherTitleName"
-                app:layout_constraintBottom_toTopOf="@+id/spinner_ip"
-                app:layout_constraintRight_toLeftOf="@id/spinner_ip"/>
-            <Spinner
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/spinner_ip"
-                android:spinnerMode="dropdown"
-                android:entries="@array/myarray"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etVoucherTitleName"
-                app:layout_constraintLeft_toRightOf="@id/edit_ip"/>
 
             <EditText
                 android:id="@+id/etVoucherDescriptionName"
@@ -82,7 +56,7 @@
                 app:layout_constraintBottom_toTopOf="@id/etDateStart"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edit_ip" />
+                app:layout_constraintTop_toBottomOf="@+id/enterpro_day_chk" />
 
             <EditText
                 android:id="@+id/etDateStart"
@@ -96,7 +70,6 @@
                 android:focusableInTouchMode="false"
                 android:gravity="center"
                 android:hint="Ngày bắt đầu"
-                app:layout_constraintBottom_toTopOf="@id/etDiscountVoucher"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/etDateEnd"
                 app:layout_constraintTop_toBottomOf="@id/etVoucherDescriptionName" />
@@ -105,7 +78,6 @@
                 android:id="@+id/etDateEnd"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/background_input"
                 android:clickable="false"
@@ -116,21 +88,23 @@
                 android:hint="Ngày kết thúc"
                 app:layout_constraintLeft_toRightOf="@id/etDateStart"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etVoucherDescriptionName" />
+                app:layout_constraintTop_toTopOf="@+id/etDateStart" />
 
-            <EditText
-                android:id="@+id/etDiscountVoucher"
+            <com.google.android.material.slider.Slider
+                android:id="@+id/enterroom_slider_slider"
                 android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/enterroom_ratio_Tv"
                 android:layout_height="50dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/background_input"
                 android:hint="Tỉ lệ giảm giá"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                app:layout_constraintBottom_toTopOf="@id/tvDescriptionActionSetImage"
+                android:stepSize="1"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etDateStart" />
+                tools:layout_editor_absoluteY="463dp" />
 
             <TextView
                 android:id="@+id/tvDescriptionActionSetImage"
@@ -143,7 +117,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tvItemDescription"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etDiscountVoucher" />
+                app:layout_constraintTop_toBottomOf="@id/enterroom_slider_slider" />
 
             <TextView
                 android:id="@+id/tvItemDescription"
@@ -159,8 +133,8 @@
             <!--ImageView to preview the selected image-->
             <ImageView
                 android:id="@+id/imgPreviewImageVoucher"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
                 android:layout_margin="10dp"
                 android:background="#C7E0F4"
                 android:scaleType="fitXY"
@@ -177,10 +151,47 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgPreviewImageVoucher" />
+
+            <CheckBox
+                android:id="@+id/enterpro_overnight_chk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qua đêm"
+                app:layout_constraintEnd_toEndOf="@+id/etVoucherTitleName"
+                app:layout_constraintTop_toTopOf="@+id/enterpro_day_chk" />
+
+            <CheckBox
+                android:id="@+id/enterpro_day_chk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Theo ngày"
+                app:layout_constraintEnd_toStartOf="@+id/enterpro_overnight_chk"
+                app:layout_constraintStart_toEndOf="@+id/enterpro_hour_chk"
+                app:layout_constraintTop_toTopOf="@+id/enterpro_hour_chk" />
+
+            <CheckBox
+                android:id="@+id/enterpro_hour_chk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Theo giờ"
+                app:layout_constraintStart_toStartOf="@+id/etVoucherTitleName"
+                app:layout_constraintTop_toBottomOf="@+id/etVoucherTitleName" />
+
+            <TextView
+                android:id="@+id/enterroom_ratio_Tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Tỷ lệ phần trăm ưu đãi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDateStart" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSaveVoucher"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -192,10 +203,10 @@
         android:text="Lưu"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/btnCancelVoucher"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toLeftOf="@+id/btnCancelVoucher"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancelVoucher"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -207,8 +218,8 @@
         android:text="Hủy"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btnSaveVoucher" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnSaveVoucher" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

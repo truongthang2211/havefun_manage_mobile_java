@@ -6,9 +6,10 @@ import androidx.annotation.RequiresApi;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class Promotion {
-    String [] order_type;
+    ArrayList<String> order_type;
     Timestamp time_start;
     Timestamp time_end;
     Timestamp created_at;
@@ -25,11 +26,11 @@ public class Promotion {
     public Promotion() {
     }
 
-    public String[] getOrder_type() {
+    public ArrayList<String> getOrder_type() {
         return order_type;
     }
 
-    public void setOrder_type(String[] order_type) {
+    public void setOrder_type(ArrayList<String> order_type) {
         this.order_type = order_type;
     }
 

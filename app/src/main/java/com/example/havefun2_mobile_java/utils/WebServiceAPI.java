@@ -25,4 +25,7 @@ public interface WebServiceAPI {
 
     @POST("/api/promotions/create")
     Call<Object> CreatePromotion(@Body RequestBody file);
+
+    @PUT("/api/promotions/edit")
+    Call<Object> EditPromotion(@Body RequestBody file);
 }
