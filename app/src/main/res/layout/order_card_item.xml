@@ -189,4 +189,15 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Order_pay_Button" />
+
+    <TextView
+        android:id="@+id/Order_status_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Đã thanh toán"
+        android:textColor="#3ABC3A"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Order_Room_Tv_e" />
 </androidx.constraintlayout.widget.ConstraintLayout>
