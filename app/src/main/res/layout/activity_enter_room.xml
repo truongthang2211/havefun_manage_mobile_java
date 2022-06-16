@@ -318,13 +318,13 @@
                 tools:ignore="MissingConstraints" />
 
             <CheckBox
-                android:id="@+id/chk_30m2"
+                android:id="@+id/chk_20m2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
-                android:text="30m2"
+                android:text="20m2"
                 app:layout_constraintStart_toEndOf="@+id/chk_GiuongDoi"
                 app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
                 tools:ignore="MissingConstraints" />
@@ -337,7 +337,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Cửa sổ"
-                app:layout_constraintStart_toEndOf="@+id/chk_30m2"
+                app:layout_constraintStart_toEndOf="@+id/chk_20m2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_DKP"
                 tools:ignore="MissingConstraints" />
 
@@ -396,7 +396,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/edit_btn_sua_background"
                 android:text="Wifi"
-                app:layout_constraintStart_toStartOf="@+id/chk_30m2"
+                app:layout_constraintStart_toStartOf="@+id/chk_20m2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Tienich" />
 
             <CheckBox
@@ -409,7 +409,7 @@
                 app:layout_constraintStart_toStartOf="@+id/chk_SanGo"
                 app:layout_constraintTop_toBottomOf="@+id/chk_SanGo" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_Them"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
@@ -423,7 +423,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/myroom_imgs_viewpager"
                 tools:ignore="HardcodedText,MissingConstraints" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+
                 android:id="@+id/btn_Huy"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
@@ -442,7 +443,7 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chk_TruyenHinhCap" >
+                app:layout_constraintTop_toBottomOf="@+id/chk_TruyenHinhCap">
 
             </androidx.viewpager2.widget.ViewPager2>
 
@@ -456,6 +457,21 @@
                 app:layout_constraintStart_toStartOf="@+id/myroom_imgs_viewpager"
                 app:layout_constraintTop_toTopOf="@+id/myroom_imgs_viewpager"
                 app:srcCompat="@drawable/default_image" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/enterroom_edit_Mbtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#27000000"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:stateListAnimator="@null"
+                app:icon="@drawable/ic_baseline_edit_24"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/myroom_imgs_viewpager"
+                app:layout_constraintEnd_toEndOf="@+id/myroom_imgs_viewpager"
+                tools:visibility="invisible" />
 
             <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
                 android:id="@+id/worm_dots_indicator"

@@ -1,99 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="8dp">
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/room_norcard_card"
-        android:layout_width="136dp"
-        android:layout_height="148dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/room_norcard_img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/room_norcard_name_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="8dp"
-        android:text="Đang tải..."
-        android:textColor="@color/grey"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
-        app:layout_constraintTop_toTopOf="@+id/room_norcard_card" />
-
-    <TextView
-        android:id="@+id/room_norcard_hour_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="16dp"
-        android:text="0 đ"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_card" />
-
-    <TextView
-        android:id="@+id/room_norcard_roomid_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="16dp"
-        android:text="Đang tải"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
-        app:layout_constraintTop_toBottomOf="@+id/room_norcard_roomtpe_Tv" />
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
 
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#ccc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:paddingTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/room_norcard_roomtpe_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/grey"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
-        app:layout_constraintTop_toBottomOf="@+id/room_norcard_name_Tv"
-        tools:text="Đang tải" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/room_norcard_card"
+            android:layout_width="136dp"
+            android:layout_height="148dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/room_norcard_overnight_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="0 đ"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_hour_Tv"
-        app:layout_constraintTop_toTopOf="@+id/room_norcard_hour_Tv" />
+            <ImageView
+                android:id="@+id/room_norcard_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+        </com.google.android.material.card.MaterialCardView>
 
-    <TextView
-        android:id="@+id/room_norcard_daily_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="0 đ"
-        app:layout_constraintStart_toEndOf="@+id/room_norcard_overnight_Tv"
-        app:layout_constraintTop_toTopOf="@+id/room_norcard_overnight_Tv" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/room_norcard_name_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Đang tải..."
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
+            app:layout_constraintTop_toTopOf="@+id/room_norcard_card" />
+
+        <TextView
+            android:id="@+id/room_norcard_hour_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="16dp"
+            android:text="0 đ"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_card" />
+
+        <TextView
+            android:id="@+id/room_norcard_roomid_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:text="Đang tải"
+            android:textStyle="normal"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
+            app:layout_constraintTop_toBottomOf="@+id/room_norcard_roomtpe_Tv" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/room_norcard_roomtpe_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_card"
+            app:layout_constraintTop_toBottomOf="@+id/room_norcard_name_Tv"
+            tools:text="Đang tải" />
+
+        <TextView
+            android:id="@+id/room_norcard_overnight_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="0 đ"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_hour_Tv"
+            app:layout_constraintTop_toTopOf="@+id/room_norcard_hour_Tv" />
+
+        <TextView
+            android:id="@+id/room_norcard_daily_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="0 đ"
+            app:layout_constraintStart_toEndOf="@+id/room_norcard_overnight_Tv"
+            app:layout_constraintTop_toTopOf="@+id/room_norcard_overnight_Tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

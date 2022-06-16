@@ -140,7 +140,7 @@ public class MyHotelFragment extends Fragment {
                     @Override
                     public void onResponse(Call call, retrofit2.Response response) {
                         try {
-                            JSONObject respondOb = new JSONObject(response.body().toString());
+                            JSONObject respondOb = new JSONObject(new Gson().toJson(response.body()));
                             JSONObject hotelJs = respondOb.getJSONObject("data");
                             Hotel t = new Gson().fromJson(hotelJs.toString(),Hotel.class);
 

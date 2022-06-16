@@ -11,15 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.havefun2_mobile_java.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class SliderImgsAdapter extends RecyclerView.Adapter<SliderImgsAdapter.ViewHolder> {
-    ArrayList<Uri> imgUris;
+    ArrayList<Uri> imgUris=null;
+    ArrayList<String> imgsStr=null;
     Context context;
 
-    public SliderImgsAdapter( Context context,ArrayList<Uri> imgUris) {
+    public SliderImgsAdapter(Context context, ArrayList<Uri> imgUris) {
         this.imgUris = imgUris;
+        this.context = context;
+    }
+
+    public SliderImgsAdapter(ArrayList<String> imgsStr,Context context ) {
+        this.imgsStr = imgsStr;
         this.context = context;
     }
 
@@ -32,15 +39,22 @@ public class SliderImgsAdapter extends RecyclerView.Adapter<SliderImgsAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Uri uri = imgUris.get(position);
-        holder.slide_img.setImageURI(uri);
+        if (imgUris==null){
+            Picasso.get().load(imgsStr.get(position)).into(holder.slide_img);
+        }else {
+            Uri uri = imgUris.get(position);
+            holder.slide_img.setImageURI(uri);
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        if (imgUris == null)
+        if (imgUris == null && imgsStr==null)
             return 0;
+        if (imgsStr!=null)
+            return imgsStr.size();
         return imgUris.size();
     }
 
