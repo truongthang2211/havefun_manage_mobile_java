@@ -3,6 +3,7 @@ package com.example.havefun2_mobile_java.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -28,6 +29,7 @@ import com.example.havefun2_mobile_java.activities.EnterPromotionActivity;
 import com.example.havefun2_mobile_java.activities.EnterRoomActivity;
 import com.example.havefun2_mobile_java.databinding.FragmentMyroomsBinding;
 import com.example.havefun2_mobile_java.databinding.FragmentPromotionsBinding;
+import com.example.havefun2_mobile_java.models.HostUser;
 import com.example.havefun2_mobile_java.models.Promotion;
 import com.example.havefun2_mobile_java.models.Room;
 import com.example.havefun2_mobile_java.utils.MySingleton;
@@ -49,7 +51,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class PromotionsFragment extends Fragment {
     MaterialCardView promotion_addroom_card;
     String ServerURL ;
-    String HotelID = "NfmlyyCa26QE0dtvdwmr";
+    String HotelID ;
     LinearLayout listProLinear ;
     ArrayList<Promotion> listpro;
     private FragmentPromotionsBinding binding;
@@ -69,6 +71,13 @@ public class PromotionsFragment extends Fragment {
         this.context = container.getContext();
         binding = FragmentPromotionsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        SharedPreferences pref =getActivity(). getApplicationContext().getSharedPreferences("User", 0);
+        String name = pref.getString("hostuserObject", "undefined");
+        ServerURL= getString(R.string.server_address);
+        if (!name.equals("undefined")){
+            HostUser hostuser = new Gson().fromJson(name,HostUser.class);
+            HotelID = hostuser.getHotel_id();
+        }
         return root;
     }
 
@@ -76,7 +85,6 @@ public class PromotionsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ServerURL= getString(R.string.server_address);
         listProLinear = view.findViewById(R.id.mypromotion_listpro_linear);
 
         promotion_addroom_card = view.findViewById(R.id.promotion_addroom_card);

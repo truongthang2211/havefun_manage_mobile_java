@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.havefun2_mobile_java.R;
+import com.example.havefun2_mobile_java.models.HostUser;
 import com.example.havefun2_mobile_java.models.Promotion;
 import com.example.havefun2_mobile_java.models.Timestamp;
 import com.example.havefun2_mobile_java.utils.PathUtil;
@@ -47,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -64,7 +67,7 @@ public class EnterPromotionActivity extends AppCompatActivity {
     // the activity result code
     int SELECT_PICTURE = 200;
     String ServerURL ;
-    String HotelID = "NfmlyyCa26QE0dtvdwmr";
+    String HotelID ;
     MaterialButton btnSaveVoucher;
     MaterialButton btnCancelVoucher;
     ImageView imgPreviewImage;
@@ -92,11 +95,37 @@ public class EnterPromotionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_promotion);
-
+        SharedPreferences pref =getApplicationContext().getSharedPreferences("User", 0);
+        String name = pref.getString("hostuserObject", "undefined");
+        ServerURL= getString(R.string.server_address);
+        if (!name.equals("undefined")) {
+            HostUser hostuser = new Gson().fromJson(name, HostUser.class);
+            HotelID = hostuser.getHotel_id();
+            if (HotelID==null){
+                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Oops...")
+                        .setContentText("Hãy nhập thông tin khánh sạn của bạn trước!").setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        finish();
+                    }
+                })
+                        .show();
+            }
+        } else {
+            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Oops...")
+                    .setContentText("Something went wrong!").setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    finish();
+                }
+            })
+                    .show();
+        }
         Intent intent = getIntent();
         String proStr = intent.getStringExtra("promotion");
         btnSaveVoucher = findViewById(R.id.btnSaveVoucher);
-        ServerURL = getString(R.string.server_address);
 
 
         int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);

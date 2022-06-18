@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_orders" />
     <fragment
         android:id="@+id/navigation_userhost"
-        android:name="com.example.havefun2_mobile_java.fragments.UserHostFragment"
+        android:name="com.example.havefun2_mobile_java.fragments.ProfileFragment"
         android:label="Quản lý người dùng"
-        tools:layout="@layout/fragment_user_host" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

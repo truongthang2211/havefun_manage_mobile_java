@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import com.example.havefun2_mobile_java.R;
 import com.example.havefun2_mobile_java.adapters.SliderImgsAdapter;
 import com.example.havefun2_mobile_java.models.Facility;
+import com.example.havefun2_mobile_java.models.HostUser;
 import com.example.havefun2_mobile_java.models.Hotel;
 import com.example.havefun2_mobile_java.models.Room;
 import com.example.havefun2_mobile_java.models.RoomCondition;
@@ -34,6 +36,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -45,6 +48,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EnterRoomActivity extends AppCompatActivity {
     Context context;
+    String ServerURL;
+    String HotelID;
+
     public static final int PICK_IMAGE = 1;
     ArrayList<Uri> imageUris;
     TextInputEditText txt_TenPhong;
@@ -74,12 +80,40 @@ public class EnterRoomActivity extends AppCompatActivity {
     ViewPager2 myroom_imgs_viewpager;
     WormDotsIndicator worm_dots_indicator;
     ImageView myroom_chooseimg_ImV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_room);
-
-        context=this;
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("User", 0);
+        String name = pref.getString("hostuserObject", "undefined");
+        ServerURL = getString(R.string.server_address);
+        if (!name.equals("undefined")) {
+            HostUser hostuser = new Gson().fromJson(name, HostUser.class);
+            HotelID = hostuser.getHotel_id();
+            if (HotelID==null){
+                new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Oops...")
+                        .setContentText("Hãy nhập thông tin khánh sạn của bạn trước!").setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        finish();
+                    }
+                })
+                        .show();
+            }
+        } else {
+            new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Oops...")
+                    .setContentText("Something went wrong!").setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    finish();
+                }
+            })
+                    .show();
+        }
+        context = this;
         myroom_chooseimg_ImV = findViewById(R.id.myroom_chooseimg_ImV);
         txt_TenPhong = findViewById(R.id.txt_TenPhong);
         txt_MaPhong = findViewById(R.id.txt_MaPhong);
@@ -101,9 +135,9 @@ public class EnterRoomActivity extends AppCompatActivity {
         chk_ThangMay = findViewById(R.id.chk_ThangMay);
         chk_TruyenHinhCap = findViewById(R.id.chk_TruyenHinhCap);
 
-        btn_Them= findViewById(R.id.btn_Them);
-        btn_Huy= findViewById(R.id.btn_Huy);
-        enterroom_edit_Mbtn= findViewById(R.id.enterroom_edit_Mbtn);
+        btn_Them = findViewById(R.id.btn_Them);
+        btn_Huy = findViewById(R.id.btn_Huy);
+        enterroom_edit_Mbtn = findViewById(R.id.enterroom_edit_Mbtn);
         btn_Huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +145,7 @@ public class EnterRoomActivity extends AppCompatActivity {
             }
         });
         worm_dots_indicator = findViewById(R.id.worm_dots_indicator);
-        myroom_imgs_viewpager= findViewById(R.id.myroom_imgs_viewpager);
+        myroom_imgs_viewpager = findViewById(R.id.myroom_imgs_viewpager);
         myroom_chooseimg_ImV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,8 +168,8 @@ public class EnterRoomActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String roomStr = intent.getStringExtra("room");
-        if (roomStr !=null){
-            Room r = new Gson().fromJson(roomStr,Room.class);
+        if (roomStr != null) {
+            Room r = new Gson().fromJson(roomStr, Room.class);
             RenderRoom(r);
             btn_Them.setText("Lưu");
             btn_Them.setOnClickListener(new View.OnClickListener() {
@@ -143,24 +177,25 @@ public class EnterRoomActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Room editRoom = getRoom();
                     editRoom.setId(r.getId());
-                    onSubmit("edit",editRoom);
+                    onSubmit("edit", editRoom);
                 }
             });
-        }else{
+        } else {
             btn_Them.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onSubmit("addnew",new Room());
+                    onSubmit("addnew", new Room());
                 }
             });
         }
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
-            if (data!=null){
+            if (data != null) {
                 imageUris = new ArrayList<>();
                 if (data.getClipData() != null) {
                     int count = data.getClipData().getItemCount();
@@ -172,10 +207,10 @@ public class EnterRoomActivity extends AppCompatActivity {
                     Uri imageUri = data.getData();
                     imageUris.add(imageUri);
                 }
-                SliderImgsAdapter adapter = new SliderImgsAdapter(context,imageUris);
+                SliderImgsAdapter adapter = new SliderImgsAdapter(context, imageUris);
                 myroom_imgs_viewpager.setAdapter(adapter);
                 worm_dots_indicator.setViewPager2(myroom_imgs_viewpager);
-                if (imageUris.size()!=0){
+                if (imageUris.size() != 0) {
                     myroom_chooseimg_ImV.setVisibility(View.INVISIBLE);
                     enterroom_edit_Mbtn.setVisibility(View.VISIBLE);
                 }
@@ -183,37 +218,36 @@ public class EnterRoomActivity extends AppCompatActivity {
 
         }
     }
-    private void onSubmit(String option,Room r ){
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("result",option);
-        setResult(Activity.RESULT_OK,returnIntent);
 
-        String ServerURL = getString(R.string.server_address);
+    private void onSubmit(String option, Room r) {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result", option);
+        setResult(Activity.RESULT_OK, returnIntent);
+
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerURL).addConverterFactory(GsonConverterFactory.create()).build();
         WebServiceAPI uploadService = retrofit.create(WebServiceAPI.class);
         MultipartBody.Builder builder = new MultipartBody.Builder();
         builder.setType(MultipartBody.FORM);
 
-        String HotelID = "NfmlyyCa26QE0dtvdwmr";
         JSONObject postObject = new JSONObject();
         try {
-            postObject.put("hotel_id",HotelID);
-            postObject.put("room",new JSONObject(new Gson().toJson(getRoom())) );
+            postObject.put("hotel_id", HotelID);
+            postObject.put("room", new JSONObject(new Gson().toJson(getRoom())));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        if (option.equals("addnew")){
+        if (option.equals("addnew")) {
             builder.addFormDataPart("data", postObject.toString());
 
-        }else{
+        } else {
             builder.addFormDataPart("data", new Gson().toJson(r));
 
         }
 
         for (int i = 0; i < imageUris.size(); i++) {
             try {
-                String stringPath = PathUtil.getPath(context,imageUris.get(i));
+                String stringPath = PathUtil.getPath(context, imageUris.get(i));
                 File file = new File(stringPath);
                 builder.addFormDataPart("imgs", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
 
@@ -223,7 +257,7 @@ public class EnterRoomActivity extends AppCompatActivity {
         }
         MultipartBody requestBody = builder.build();
 
-        Call call = option.equals("addnew")? uploadService.AddRoom(requestBody):uploadService.EditRoom(requestBody);
+        Call call = option.equals("addnew") ? uploadService.AddRoom(requestBody) : uploadService.EditRoom(requestBody);
 
         call.enqueue(new Callback() {
             @Override
@@ -231,7 +265,7 @@ public class EnterRoomActivity extends AppCompatActivity {
                 try {
                     JSONObject respondOb = new JSONObject(new Gson().toJson(response.body()));
                     int status = respondOb.getInt("status");
-                    if (status==200){
+                    if (status == 200) {
                         finish();
                     }
 
@@ -249,7 +283,8 @@ public class EnterRoomActivity extends AppCompatActivity {
         });
 
     }
-    private Room getRoom(){
+
+    private Room getRoom() {
         Room r = new Room();
         r.setName(String.valueOf(txt_TenPhong.getText()));
         r.setDescription(String.valueOf(txt_MoTaPhong.getText()));
@@ -277,7 +312,8 @@ public class EnterRoomActivity extends AppCompatActivity {
         r.setFacilities(fac);
         return r;
     }
-    private void RenderRoom(Room r){
+
+    private void RenderRoom(Room r) {
         txt_TenPhong.setText(r.getName());
         txt_MoTaPhong.setText(r.getDescription());
         txt_LoaiPhong.setText(r.getRoom_type());
@@ -299,13 +335,13 @@ public class EnterRoomActivity extends AppCompatActivity {
         chk_TV.setChecked(r.getFacilities().isTv());
 
         ArrayList<Uri> uris = new ArrayList<>();
-        for (String url : r.getImgs()){
+        for (String url : r.getImgs()) {
             uris.add(Uri.parse(url));
         }
-        SliderImgsAdapter adapter = new SliderImgsAdapter(new ArrayList<String>(Arrays.asList(r.getImgs())),context);
+        SliderImgsAdapter adapter = new SliderImgsAdapter(new ArrayList<String>(Arrays.asList(r.getImgs())), context);
         myroom_imgs_viewpager.setAdapter(adapter);
         worm_dots_indicator.setViewPager2(myroom_imgs_viewpager);
-        if (r.getImgs().length!=0){
+        if (r.getImgs().length != 0) {
             myroom_chooseimg_ImV.setVisibility(View.INVISIBLE);
             enterroom_edit_Mbtn.setVisibility(View.VISIBLE);
         }

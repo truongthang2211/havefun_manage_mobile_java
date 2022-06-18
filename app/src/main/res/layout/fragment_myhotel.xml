@@ -31,18 +31,55 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_chainStyle="packed">
 
-                <ImageView
-                    android:id="@+id/hotel_pic_iv"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/myhotel_imgs_viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="200dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth=""
-                    app:srcCompat="@drawable/default_image"
-                    tools:srcCompat="@drawable/default_image"></ImageView>
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <ImageView
+                    android:id="@+id/myhotel_chooseimg_ImV"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintEnd_toEndOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintStart_toStartOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintTop_toTopOf="@+id/myhotel_imgs_viewpager"
+                    app:srcCompat="@drawable/default_image" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/myhotel_edit_Mbtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#27000000"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:stateListAnimator="@null"
+                    app:icon="@drawable/ic_baseline_edit_24"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintEnd_toEndOf="@+id/myhotel_imgs_viewpager"
+                    tools:visibility="invisible" />
+
+                <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    android:id="@+id/myhotel_worm_dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="16dp"
+                    app:dotsSpacing="4dp"
+                    app:dotsStrokeWidth="2dp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintEnd_toEndOf="@+id/myhotel_imgs_viewpager"
+                    app:layout_constraintStart_toStartOf="@+id/myhotel_imgs_viewpager" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

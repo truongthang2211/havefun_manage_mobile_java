@@ -7,6 +7,7 @@ import com.example.havefun2_mobile_java.models.Promotion;
 
 import org.json.JSONObject;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -28,4 +29,7 @@ public interface WebServiceAPI {
 
     @PUT("/api/promotions/edit")
     Call<Object> EditPromotion(@Body RequestBody file);
+
+    @PUT("/api/hotels/edit")
+    Call<Object> EditHotel(@Body RequestBody file);
 }

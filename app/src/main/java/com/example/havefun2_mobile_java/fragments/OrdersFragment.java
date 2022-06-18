@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
@@ -30,6 +31,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.havefun2_mobile_java.R;
 import com.example.havefun2_mobile_java.activities.EnterPromotionActivity;
 import com.example.havefun2_mobile_java.activities.EnterRoomActivity;
+import com.example.havefun2_mobile_java.models.HostUser;
 import com.example.havefun2_mobile_java.models.Order;
 import com.example.havefun2_mobile_java.models.Room;
 import com.example.havefun2_mobile_java.models.Timestamp;
@@ -58,7 +60,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class OrdersFragment extends Fragment {
     String ServerURL;
-    String HotelID = "NfmlyyCa26QE0dtvdwmr";
+    String HotelID;
     ArrayList<Order> Orderlist;
     private Context context;
     private LinearLayout OrderLayout;
@@ -82,6 +84,13 @@ public class OrdersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.context = container.getContext();
+        SharedPreferences pref =getActivity(). getApplicationContext().getSharedPreferences("User", 0);
+        String name = pref.getString("hostuserObject", "undefined");
+        ServerURL= getString(R.string.server_address);
+        if (!name.equals("undefined")){
+            HostUser hostuser = new Gson().fromJson(name,HostUser.class);
+            HotelID = hostuser.getHotel_id();
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_orders, container, false);
 
@@ -95,7 +104,6 @@ public class OrdersFragment extends Fragment {
         Order_DatePicker_CardView = view.findViewById(R.id.Order_DatePicker_CardView);
         OrderLayout = view.findViewById(R.id.Order_Linear_Orderlist);
         DayOfWeekLayout = view.findViewById(R.id.Order_Linear_DayOfMonth);
-        ServerURL = getString(R.string.server_address);
 
         FetchData(LocalDate.now());
         setDatePicker();

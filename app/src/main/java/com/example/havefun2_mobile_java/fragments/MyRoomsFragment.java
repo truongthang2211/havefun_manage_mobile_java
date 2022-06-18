@@ -3,6 +3,7 @@ package com.example.havefun2_mobile_java.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.havefun2_mobile_java.R;
 import com.example.havefun2_mobile_java.activities.EnterRoomActivity;
+import com.example.havefun2_mobile_java.activities.MainActivity;
 import com.example.havefun2_mobile_java.databinding.FragmentMyroomsBinding;
+import com.example.havefun2_mobile_java.models.HostUser;
+import com.example.havefun2_mobile_java.models.Hotel;
 import com.example.havefun2_mobile_java.models.Room;
 import com.example.havefun2_mobile_java.utils.MySingleton;
 import com.google.android.material.card.MaterialCardView;
@@ -42,7 +46,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MyRoomsFragment extends Fragment {
     String ServerURL ;
-    String HotelID = "NfmlyyCa26QE0dtvdwmr";
+    String HotelID ;
     LinearLayout listRoomLinear ;
     Context context;
     ArrayList<Room> listroom;
@@ -53,13 +57,19 @@ public class MyRoomsFragment extends Fragment {
         this.context = container.getContext();
         binding = FragmentMyroomsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        SharedPreferences pref =getActivity(). getApplicationContext().getSharedPreferences("User", 0);
+        String name = pref.getString("hostuserObject", "undefined");
+        ServerURL= getString(R.string.server_address);
+        if (!name.equals("undefined")){
+            HostUser hostuser = new Gson().fromJson(name,HostUser.class);
+            HotelID = hostuser.getHotel_id();
+        }
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ServerURL= getString(R.string.server_address);
         listRoomLinear = view.findViewById(R.id.myroom_listroom_linear);
         addroom_card = view.findViewById(R.id.myroom_addroom_card);
         addroom_card.setOnClickListener(new View.OnClickListener() {
